@@ -1,6 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config();
+const cors = require('cors');
+const app = express();
+const port = 5000; 
+app.use(cors());
 
 mongoose.connect(process.env.CONNECT_DB, {
   useNewUrlParser: true,
@@ -16,8 +20,8 @@ const quoteSchema = new mongoose.Schema({
 
   const Quote = mongoose.model('Quote', quoteSchema);
 
-const port = 5000; 
-const app = express();
+
+
 
 // Quote route
 app.get('/api', (req, res) => {
